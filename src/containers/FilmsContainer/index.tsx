@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { Skeleton } from '@material-ui/lab';
 import { getStartWarsFilms } from '../../api';
 import { FilmsTable } from '../../components/FilmsTable';
 import { StarWarsFilm } from '../../types';
@@ -14,15 +15,20 @@ export const FilmsContainer: React.FC = () => {
     }
   );
 
-  console.log({ isLoading, data, error });
-
   if (isLoading) {
-    return <span>Loading...</span>
+    // No real good way to infer the height of the table since the row count
+    // is unknown in a real scenario.  Width 100% I think works well since it
+    // allows calling code to determine size and spacing.
+    return <Skeleton variant="rect" width="100%" height={200} animation="wave" />;
   }
 
   // if it's not loading we should have data
   if (!data) {
-    return <span>Error: {error?.message || 'Unable to fetch Star Wars films'}</span>
+    return (
+      <div style={{ textAlign: 'center' }}>
+        <span>Error: {error?.message || 'Unable to fetch Star Wars films'}</span>
+      </div>
+    );
   }
   
   return (

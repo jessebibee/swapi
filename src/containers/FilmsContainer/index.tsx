@@ -4,7 +4,7 @@ import { getStartWarsFilms } from '../../api';
 import { FilmsTable } from '../../components/FilmsTable';
 import { StarWarsFilm } from '../../types';
 
-export const App: React.FC = () => {
+export const FilmsContainer: React.FC = () => {
   const { isLoading, data, error } = useQuery<StarWarsFilm[], Error>(
     'films',
     getStartWarsFilms,

@@ -19,13 +19,13 @@ export const FilmsContainer: React.FC = () => {
     // No real good way to infer the height of the table since the row count
     // is unknown in a real scenario.  Width 100% I think works well since it
     // allows calling code to determine size and spacing.
-    return <Skeleton variant="rect" width="100%" height={200} animation="wave" />;
+    return <Skeleton variant="rect" width="100%" height={200} animation="wave" data-testid="skeleton" />;
   }
 
   // if it's not loading we should have data
   if (!data) {
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'center' }} data-testid="error">
         <span>Error: {error?.message || 'Unable to fetch Star Wars films'}</span>
       </div>
     );

@@ -13,7 +13,7 @@ interface FilmsTableProps {
 }
 
 export const FilmsTable: React.FC<FilmsTableProps> = ({ films }) => (
-  <TableContainer component={Paper}>
+  <TableContainer component={Paper} data-testid="films-table">
     <Table aria-label="Star Wars films">
       <TableHead>
         <TableRow>
